@@ -1,0 +1,40 @@
+GPS-Plotter
+
+Included Files :
+    ./server folder:
+        * digraph.cpp
+        * digraph.h
+        * dijkstra.cpp
+        * dijkstra.h
+        * server.cpp
+        * wdigraph.h
+        * edmonton-roads-2.0.1.txt
+        * Makefile
+    
+    ./soln folder:
+        * README
+        * Makefile
+
+Running Instructions :
+    Change the command prompt directory to 'GPS-Plotter', which contains the folders'soln' and'server' (both of which contain the files listed above), as well as the validate Makefile. 
+
+    Run the command'make run' in the./soln directory to compile and link the files for the server in the./server directory. Because gnome-terminal is not available, open another terminal (Windows or MacOS) and cd all the way into the./soln folder, then type the command 'python3 client/client.py'. This will activate the plotter.
+
+    How to use the Navigation System:
+        - To move up/down/left/right, use W/S/A/D.
+        - To remove all routes and selected points from the map, press R.
+        - Press Q and E to zoom in and out of the map while keeping the mouse cursor in its previous position.
+        - To select the current point as the start or end point of a trip, use the left mouse button.
+        - Drag the left mouse button to move around the map.
+
+    In the terminal where the command 'python3 client/client.py' was entered, the coordinate will be displayed.
+    
+Notes and Assumptions :
+
+    It is assumed that the client sends the route request in two lines without including the 'R' character.
+
+    The assumption that the server does not send the number of waypoints and does not expect an acknowledgement after sending each waypoint's coordinates.
+
+    The assumption that after writing all of the waypoints for a route request to outpipe, the server only sends the 'E' character.
+
+    The assumption is that when the plotter window is closed, the client will write a single 'Q' character to the pipe, which, if read, will clean up and exit the server.
